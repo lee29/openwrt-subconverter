@@ -6,11 +6,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sub-web
 PKG_VERSION:=20260126
-PKG_RELEASE:=3
+PKG_RELEASE:=5
 
-PKG_SOURCE:=$(PKG_NAME)-dist-$(PKG_VERSION).zip
+PKG_SOURCE:=$(PKG_NAME)-dist-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/Dawneng/sub-web/releases/download/$(PKG_VERSION)
-PKG_HASH:=92a93a7021c202095c170ce557ca2a712cd81bccca5ccdb47fc2ca68b4b6df7c
+PKG_HASH:=6f7cc5681e95bb9728b6da04f45440269d37c13d57c9b1974588db36e94d45ad
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
@@ -26,11 +26,13 @@ define Package/sub-web
   PKGARCH:=all
 endef
 
-UNZIP_CMD:=unzip -q -d $(PKG_BUILD_DIR)/dist $(DL_DIR)/$(PKG_SOURCE)
-
 define Package/sub-web/description
   Based on vue-cli and subconverter, for generating proxy subscription
   url automatically.
+endef
+
+define Build/Prepare
+	tar -xzvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
