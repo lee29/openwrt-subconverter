@@ -5,12 +5,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sub-web
-PKG_VERSION:=20260128
+PKG_VERSION:=1.0
 PKG_RELEASE:=6
 
-PKG_SOURCE:=$(PKG_NAME)-dist-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/Dawneng/sub-web/releases/download/$(PKG_VERSION)
-PKG_HASH:=d5a909974fd084b7f8c99b74d3eea82a5dd1fb7cf4f50cc9869dfb5481c443c2
+PKG_SOURCE:=$(PKG_NAME)-dist.tar.gz
+PKG_SOURCE_URL:=https://github.com/Dawneng/sub-web/releases/download/latest/$(PKG_SOURCE)
+PKG_HASH:=856aab26ab635ba2e78652674e50aa70d5560b8de13493c9f15749ab170d1b77
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
