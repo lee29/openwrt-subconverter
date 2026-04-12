@@ -19,7 +19,8 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
 PKG_BUILD_DEPENDS:=jpcre2 rapidjson toml11
-PKG_BUILD_FLAGS:=gc-sections lto
+# 修改这里：移除 lto
+PKG_BUILD_FLAGS:=gc-sections
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -36,7 +37,8 @@ endef
 # mips(el) & glibc require it
 CMAKE_OPTIONS+= -DCMAKE_EXE_LINKER_FLAGS="-latomic"
 
-TARGET_CXXFLAGS := $(filter-out -O%,$(TARGET_CXXFLAGS)) -O3
+# 修改这里：添加 -fno-lto
+TARGET_CXXFLAGS := $(filter-out -O%,$(TARGET_CXXFLAGS)) -O3 -fno-lto
 TARGET_CXXFLAGS += -Wall -Wextra
 
 define Package/subconverter/install
